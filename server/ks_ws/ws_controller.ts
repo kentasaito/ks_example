@@ -1,4 +1,5 @@
 import { pwa_controller } from './deps.ts';
+import { controller } from '../controller.ts';
 
 export class ws_controller extends pwa_controller {
 
@@ -19,15 +20,23 @@ export class ws_controller extends pwa_controller {
 //				const user = model.user_shutoku(params.user_token, request.headers.get('user-agent'), connInfo.remoteAddr.hostname);
 				ws_controller.client_list.push({
 //					user_id: user[0],
-					target: event.target,
+					socket: event.target,
 				});
 				console.log('onopen:', 'number of clients:', ws_controller.client_list.length);
 //				const result = model.onopen(params, user);
+/*
 				socket.send(JSON.stringify({
 					pathname: 'onopen',
-//					params: result,
+					params: {},
 				}));
+*/
 			};
+
+			// onmessage
+			socket.onmessage = event => {
+				const data = JSON.parse(event.data);
+				controller[data.pathname](data.params);
+			}
 
 			// onclose
 			socket.onclose = event => {

@@ -16,7 +16,7 @@ export class ws_controller extends spa_controller {
 		// onmessage
 		ws_controller.socket.onmessage = event => {
 			const data = JSON.parse(event.data);
-console.log('onmessage', data);
+			controller[data.pathname](data.params);
 		};
 
 		// onclose
