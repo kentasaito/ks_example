@@ -4,6 +4,7 @@ export class controller extends ws_controller {
 
 	static initialize() {
 		super.initialize(controller);
+		document.getElementById('text').focus();
 		document.getElementById('to_about_state').onclick = event => {
 			event.preventDefault();
 			controller.push_state('about');

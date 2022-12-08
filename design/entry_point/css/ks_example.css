@@ -17,6 +17,8 @@ body {
 .state {
 	max-width: 24rem;
 	height: 100%;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 #text {
@@ -24,7 +26,6 @@ body {
 }
 
 #output {
-	border: 1px solid grey;
 	overflow: scroll;
 	flex-grow: 1;
 }
