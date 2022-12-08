@@ -40,7 +40,7 @@ export class ws_controller extends pwa_controller {
 
 			// onclose
 			socket.onclose = event => {
-				ws_controller.client_list = ws_controller.client_list.filter(client => client.target !== event.target);
+				ws_controller.client_list = ws_controller.client_list.filter(client => client.socket !== event.target);
 				console.log('onclose:', 'number of clients:', ws_controller.client_list.length);
 			}
 
