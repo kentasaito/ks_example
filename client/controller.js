@@ -4,8 +4,16 @@ export class controller extends ws_controller {
 
 	static initialize() {
 		super.initialize(controller);
-		document.getElementById('to_another_state').onclick = () => controller.push_state('another');
-		document.getElementById('post').onclick = () => controller.post(document.getElementById('text').value);
+		document.getElementById('to_about_state').onclick = event => {
+			event.preventDefault();
+			controller.push_state('about');
+		}
+		document.getElementById('text').onkeydown = event => {
+			if (event.key === 'Enter') {
+				controller.post(document.getElementById('text').value);
+				document.getElementById('text').value = '';
+			}
+		}
 	}
 
 	static connected(params) {
@@ -15,7 +23,7 @@ export class controller extends ws_controller {
 	static posted(params) {
 		const element = document.createElement('div');
 		element.innerText = 'client_' + params.client_id + ': ' + params.text;
-		document.getElementById('output').appendChild(element);
+		document.getElementById('output').prepend(element);
 	}
 
 	static post(text) {
