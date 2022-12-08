@@ -1,10 +1,12 @@
 import { spa_controller } from '../ks_spa/spa_controller.js';
+import { controller } from '../controller.js';
 
 export class ws_controller extends spa_controller {
 
 	static socket;
+	static timeout_id;
 
-	static initialize(controller) {
+	static initialize() {
 		super.initialize();
 		ws_controller.socket = new WebSocket(location.protocol.replace(/http/, 'ws') + '//' + location.hostname + ':' + location.port + '/ws');
 
@@ -22,7 +24,8 @@ export class ws_controller extends spa_controller {
 		// onclose
 		ws_controller.socket.onclose = () => {
 			console.log('onclose:');
-			setTimeout(ws_controller.socket_open, 1000);
+			clearTimeout(controller.timeout_id);
+			controller.timeout_id = setTimeout(ws_controller.initialize, 3000);
 		};
 
 		// onerror

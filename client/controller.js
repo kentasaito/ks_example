@@ -8,12 +8,11 @@ export class controller extends ws_controller {
 		document.getElementById('post').onclick = () => controller.post(document.getElementById('text').value);
 	}
 
-	static onopen(params) {
+	static connected(params) {
 		document.getElementById('client_id').innerText = params.client_id;
 	}
 
 	static posted(params) {
-		console.log('posted:', params);
 		const element = document.createElement('div');
 		element.innerText = 'client_' + params.client_id + ': ' + params.text;
 		document.getElementById('output').appendChild(element);
