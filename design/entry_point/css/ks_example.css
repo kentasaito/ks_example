@@ -15,8 +15,7 @@ body {
 }
 
 .state {
-	max-width: 20rem;
-	border: 1px solid red;
+	max-width: 24rem;
 	height: 100%;
 }
 
@@ -26,6 +25,6 @@ body {
 
 #output {
 	border: 1px solid grey;
-	height: 100%;
 	overflow: scroll;
+	flex-grow: 1;
 }

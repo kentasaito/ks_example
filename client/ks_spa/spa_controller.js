@@ -10,7 +10,7 @@ export class spa_controller {
 	static push_state(state_name, params = {}, replace = false) {
 		history[replace ? 'replaceState' : 'pushState']({state_name, params}, '');
 		for (const element of document.querySelectorAll('.state')) {
-			element.style.display = element.id === `${state_name}_state` ? 'block' : 'none';
+			element.style.display = element.id === `${state_name}_state` ? 'flex' : 'none';
 		}
 	}
 }
