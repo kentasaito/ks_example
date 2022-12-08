@@ -26,12 +26,13 @@ export class ws_controller extends pwa_controller {
 				});
 				console.log('onopen:', 'number of clients:', ws_controller.client_list.length);
 //				const result = model.onopen(params, user);
-/*
+				const client = ws_controller.client_list.find(client => client.socket === event.target);
 				socket.send(JSON.stringify({
 					pathname: 'onopen',
-					params: {},
+					params: {
+						client_id: client.client_id,
+					}
 				}));
-*/
 			};
 
 			// onmessage

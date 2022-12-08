@@ -9,7 +9,7 @@ export class controller extends ws_controller {
 	}
 
 	static onopen(params) {
-console.log('onopen:', params);
+		document.getElementById('client_id').innerText = params.client_id;
 	}
 
 	static posted(params) {
