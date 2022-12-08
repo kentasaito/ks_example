@@ -15,7 +15,7 @@ console.log('onopen:', params);
 	static posted(params) {
 		console.log('posted:', params);
 		const element = document.createElement('div');
-		element.innerText = params.text;
+		element.innerText = 'client_' + params.client_id + ': ' + params.text;
 		document.getElementById('output').appendChild(element);
 	}
 

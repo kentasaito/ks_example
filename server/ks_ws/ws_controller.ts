@@ -4,6 +4,7 @@ import { controller } from '../controller.ts';
 export class ws_controller extends pwa_controller {
 
 	static client_list = [];
+	static client_id = 1;
 
 	static handler(request) {
 		const url = new URL(request.url);
@@ -20,6 +21,7 @@ export class ws_controller extends pwa_controller {
 //				const user = model.user_shutoku(params.user_token, request.headers.get('user-agent'), connInfo.remoteAddr.hostname);
 				ws_controller.client_list.push({
 //					user_id: user[0],
+					client_id: ws_controller.client_id++,
 					socket: event.target,
 				});
 				console.log('onopen:', 'number of clients:', ws_controller.client_list.length);
@@ -34,8 +36,9 @@ export class ws_controller extends pwa_controller {
 
 			// onmessage
 			socket.onmessage = event => {
+				const client = ws_controller.client_list.find(client => client.socket === event.target);
 				const data = JSON.parse(event.data);
-				controller[data.pathname](data.params);
+				controller[data.pathname](client, data.params);
 			}
 
 			// onclose
