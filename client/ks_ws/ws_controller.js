@@ -1,35 +1,31 @@
-import { spa_controller } from '../ks_spa/spa_controller.js';
-import { controller } from '../controller.js';
-
-export class ws_controller extends spa_controller {
+export class ws_controller {
 
 	static socket;
 	static timeout_id;
 
-	static initialize() {
-		super.initialize();
-		ws_controller.socket = new WebSocket(location.protocol.replace(/http/, 'ws') + '//' + location.hostname + ':' + location.port + '/ws');
+	static initialize_ws_controller() {
+		this.socket = new WebSocket(location.protocol.replace(/http/, 'ws') + '//' + location.hostname + ':' + location.port + '/ws');
 
 		// onopen
-		ws_controller.socket.onopen = () => {
+		this.socket.onopen = () => {
 			console.log('onopen:');
 		};
 
 		// onmessage
-		ws_controller.socket.onmessage = event => {
+		this.socket.onmessage = event => {
 			const data = JSON.parse(event.data);
-			controller[data.pathname](data.params);
+			this[data.pathname](data.params);
 		};
 
 		// onclose
-		ws_controller.socket.onclose = () => {
+		this.socket.onclose = () => {
 			console.log('onclose:');
-			clearTimeout(controller.timeout_id);
-			controller.timeout_id = setTimeout(ws_controller.initialize, 3000);
+			clearTimeout(this.timeout_id);
+			this.timeout_id = setTimeout(this.initialize_ws_controller.bind(this), 3000);
 		};
 
 		// onerror
-		ws_controller.socket.onerror = event => {
+		this.socket.onerror = event => {
 			console.error('onerror:', event);
 		};
 	}

@@ -1,10 +1,10 @@
 export class spa_controller {
 
-	static initialize() {
+	static initialize_spa_controller() {
 		window.onpopstate = event => {
-			spa_controller.push_state(event.state.state_name, event.state.params, true);
+			this.push_state(event.state.state_name, event.state.params, true);
 		};
-		spa_controller.push_state('main', {}, true);
+		this.push_state('main', {}, true);
 	}
 
 	static push_state(state_name, params = {}, replace = false) {
