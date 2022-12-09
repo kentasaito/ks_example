@@ -15,7 +15,7 @@ if (parseInt(Deno.env.get('USE_TLS'))) {
 	}
 }
 else {
-	serve(controller.handler, {
+	serve(controller.handler.bind(controller), {
 		port: Deno.env.get('LOCAL_PORT'),
 	});
 }

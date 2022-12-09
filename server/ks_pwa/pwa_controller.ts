@@ -29,6 +29,6 @@ export class pwa_controller {
 		for (const [key, value] of url.searchParams) {
 			params[key] = value;
 		}
-		return pwa_controller.respond(pathname);
+		return this.respond(pathname);
 	}
 }
