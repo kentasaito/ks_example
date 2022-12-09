@@ -1,5 +1,17 @@
-import { ws_view } from './ks_ws/ws_view.ts';
+import { pwa_view } from './ks_pwa/pwa_view.ts';
 
-export class view extends spa_view {
+export class view {
 
+	static extends(from) {
+		class dummy {};
+		for (const name of Object.getOwnPropertyNames(from)) {
+			if (!Object.getOwnPropertyNames(dummy).includes(name)) {
+				this[name] = from[name];
+			}
+		}
+	}
+
+	static {
+		this.extends(pwa_view);
+	}
 }

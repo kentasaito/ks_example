@@ -1,7 +1,7 @@
 import { pwa_controller } from './ks_pwa/pwa_controller.ts';
 import { ws_controller } from './ks_ws/ws_controller.ts';
 
-export class controller {// extends ws_controller {
+export class controller {
 
 	static extends(from) {
 		class dummy {};
@@ -10,7 +10,6 @@ export class controller {// extends ws_controller {
 				this[name] = from[name];
 			}
 		}
-//		this['initialize_' + from.name]();
 	}
 
 	static {
