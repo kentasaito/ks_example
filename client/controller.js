@@ -1,22 +1,6 @@
-import { spa_controller } from './ks_spa/spa_controller.js';
-import { ws_controller } from './ks_ws/ws_controller.js';
-
 export class controller {
 
-	static extends(from) {
-		class dummy {};
-		for (const name of Object.getOwnPropertyNames(from)) {
-			if (!Object.getOwnPropertyNames(dummy).includes(name)) {
-				this[name] = from[name];
-			}
-		}
-		this['initialize_' + from.name]();
-	}
-
 	static initialize_controller() {
-		this.extends(spa_controller);
-		this.extends(ws_controller);
-
 		document.getElementById('text').focus();
 		document.getElementById('to_about_state').onclick = event => {
 			event.preventDefault();
