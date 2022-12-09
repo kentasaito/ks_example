@@ -1,6 +1,6 @@
 import { extname, contentType, view } from './deps.ts';
 
-export class pwa_controller {
+export class core_controller {
 
 	static respond(pathname) {
 		for (const directory of ['./client', './design/entry_point']) {

@@ -1,6 +1,6 @@
 import { extname } from './deps.ts';
 
-export class pwa_view {
+export class core_view {
 
 	static get_body(path) {
 		if (extname(path) !== '.html') return Deno.readFileSync(path);

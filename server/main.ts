@@ -1,10 +1,10 @@
 import { serve, serveTls } from 'https://deno.land/std@0.166.0/http/server.ts';
 
-import { pwa_controller } from './ks_pwa/pwa_controller.ts';
+import { core_controller } from './ks_core/core_controller.ts';
 import { ws_controller } from './ks_ws/ws_controller.ts';
 import { controller } from './controller.ts';
 
-import { pwa_view } from './ks_pwa/pwa_view.ts';
+import { core_view } from './ks_core/core_view.ts';
 import { view } from './view.ts';
 
 function extend(to, from) {
@@ -16,9 +16,9 @@ function extend(to, from) {
 	}
 }
 
-extend(controller, pwa_controller);
+extend(controller, core_controller);
 extend(controller, ws_controller);
-extend(view, pwa_view);
+extend(view, core_view);
 
 if (parseInt(Deno.env.get('USE_TLS'))) {
 	serveTls(controller.handler, {
