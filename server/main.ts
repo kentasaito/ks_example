@@ -4,9 +4,6 @@ import { core_controller } from './ks_core/core_controller.ts';
 import { ws_controller } from './ks_ws/ws_controller.ts';
 import { controller } from './controller.ts';
 
-import { core_view } from './ks_core/core_view.ts';
-import { view } from './view.ts';
-
 function extend(to, from) {
 	class dummy {};
 	for (const name of Object.getOwnPropertyNames(from)) {
@@ -18,7 +15,6 @@ function extend(to, from) {
 
 extend(controller, core_controller);
 extend(controller, ws_controller);
-extend(view, core_view);
 
 if (parseInt(Deno.env.get('USE_TLS'))) {
 	serveTls(controller.handler, {
