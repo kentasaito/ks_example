@@ -1,6 +1,9 @@
-export class controller {
+import { ksfw } from './ksfw.js';
+
+export class controller extends ksfw {
 
 	static initialize_controller() {
+		this.initialize_ksfw();
 		document.getElementById('text').focus();
 		document.getElementById('to_about_state').onclick = event => {
 			event.preventDefault();
