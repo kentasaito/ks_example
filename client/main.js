@@ -1,5 +1,5 @@
-import { spa_controller } from './ks_spa/spa_controller.js';
-import { ws_controller } from './ks_ws/ws_controller.js';
+import { spa_controller } from './spa_controller.js';
+import { ws_controller } from './ws_controller.js';
 import { controller } from './controller.js';
 
 function extend(to, from) {

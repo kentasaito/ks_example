@@ -1,7 +1,9 @@
 import { serve, serveTls } from 'https://deno.land/std@0.166.0/http/server.ts';
 
-import { core_controller } from 'https://deno.land/x/ks_spa2@0.1.0/core_controller.ts';
-import { ws_controller } from 'https://deno.land/x/ks_spa2@0.1.0/ws_controller.ts';
+//import { core_controller } from 'https://deno.land/x/ks_spa2@0.1.0/core_controller.ts';
+//import { ws_controller } from 'https://deno.land/x/ks_spa2@0.1.0/ws_controller.ts';
+import { core_controller } from '../../ks_spa2/server/core_controller.ts';
+import { ws_controller } from '../../ks_spa2/server/ws_controller.ts';
 import { controller } from './controller.ts';
 
 function extend(to, from) {
