@@ -15,7 +15,7 @@ export class controller {
 	}
 
 	static connected(params) {
-		document.getElementById('client_id').innerText = params.client_id;
+		document.getElementById('client_id').innerText = params.user_id;
 	}
 
 	static posted(params) {
