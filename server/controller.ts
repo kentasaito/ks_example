@@ -5,7 +5,7 @@ export class controller {
 			client.socket.send(JSON.stringify({
 				pathname: 'posted',
 				params: {
-					client_id: sender.client_id,
+					user_id: sender.user.user_id,
 					text: params.text,
 				}
 			}));

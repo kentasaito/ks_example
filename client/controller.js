@@ -15,12 +15,12 @@ export class controller {
 	}
 
 	static connected(params) {
-		document.getElementById('client_id').innerText = params.user_id;
+		document.getElementById('user_id').innerText = params.user_id;
 	}
 
 	static posted(params) {
 		const element = document.createElement('div');
-		element.innerText = 'client_' + params.client_id + ': ' + params.text;
+		element.innerText = 'user_' + params.user_id + ': ' + params.text;
 		document.getElementById('output').prepend(element);
 	}
 
